@@ -1,13 +1,13 @@
 <?php
 require 'vendor/autoload.php';
 require_once 'src/api/book/BookAPI.php';
-
+require_once 'auth.php';
 
 $app = new \Slim\App;
 
 // Routes
 // all books
-$app->get('/books', "getBooks");
+$app->get('/books', "getBooks")->add("isAdmin")->add("isAuth");
 
 // get one book by id
 $app->get('/books/{id}', "getBookById");

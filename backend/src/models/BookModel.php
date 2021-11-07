@@ -3,7 +3,7 @@ include_once 'src/config/DB.php';
   class BookModel 
   {
     private $conn;
-    private $table = 'product';
+    private $table = 'book';
 
     public function __construct() {
       $db = new DB();
