@@ -1,0 +1,7 @@
+id,username,pw,email,status,created_at,updated_at,isAdmin,avatar,full_name
+1,msang,113,NULL,NULL,NULL,NULL,1,NULL,sang
+2,vkhang,114,NULL,NULL,NULL,NULL,1,NULL,khang
+3,minhtri,115,NULL,NULL,NULL,NULL,1,NULL,tri
+4,laiphu,116,NULL,NULL,NULL,NULL,1,NULL,phu
+5,vana,115,NULL,NULL,NULL,NULL,0,NULL,van a
+6,vanb,118,NULL,NULL,NULL,NULL,0,NULL,van b

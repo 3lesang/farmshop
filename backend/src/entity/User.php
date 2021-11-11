@@ -2,11 +2,10 @@
 class User {
 
     private $id;
-    private $name  = "";
+    private $full_name  = "";
     private $username = "";
-    private $password = "";
-    private $token = "";
-    private $isAdmin = "";
+    private $pw = "";
+    private $isAdmin;
 
     public function __get($attr){
       return $this->$attr;

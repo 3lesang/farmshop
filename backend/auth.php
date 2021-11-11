@@ -1,15 +1,13 @@
 <?php
 define('KEY', 'farm');
-use \Psr\Http\Message\ServerRequestInterface as Request;
-use \Psr\Http\Message\ResponseInterface as Response;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
-include './src/entity/User.php';
+
 
 function generateToken(User $user) {
     $payload = array(
         "id" => $user->__get('id'),
-        "name" => $user->__get('name'),
+        "full_name" => $user->__get('full_name'),
         "username" => $user->__get('username'),
         "isAdmin" => $user->__get('isAdmin')
     );
@@ -17,7 +15,7 @@ function generateToken(User $user) {
     return $jwt;
 }
 
-function isAuth(Request $request, Response $response, $next) {
+function isAuth($request, $response, $next) {
     $bearerToken = $request->getHeader('Authorization');
     $token = explode(' ', $bearerToken[0])[1];
     if (!$token) {
@@ -50,7 +48,7 @@ function isAuth(Request $request, Response $response, $next) {
         }
     }
 };
-function isAdmin(Request $request, Response $response, $next) {
+function isAdmin($request, $response, $next) {
     $user = $request->getAttribute('user');
 
     if ($user->isAdmin) {
