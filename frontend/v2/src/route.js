@@ -1,0 +1,33 @@
+import HomeScreen from './screens/HomeScreen.js';
+import ProductScreen from './screens/ProductScreen.js';
+
+// import CartScreen from './screens/CartScreen';
+import LoginScreen from './screens/LoginScreen.js';
+import RegisterScreen from './screens/RegisterScreen.js';
+import ProfileScreen from './screens/ProfileScreen.js';
+// import ShippingScreen from './screens/ShippingScreen';
+// import PaymentScreen from './screens/PaymentScreen';
+// import PlaceOrderScreen from './screens/PlaceOrderScreen';
+// import OrderScreen from './screens/OrderScreen';
+import DashboardScreen from './screens/DashboardScreen.js';
+import ProductListScreen from './screens/ProductListScreen.js';
+import ProductEditScreen from './screens/ProductEditScreen.js';
+// import OrderListScreen from './screens/OrderListScreen';
+
+export const routes = {
+	'/': HomeScreen,
+	'/product/:id/edit': ProductEditScreen,
+	'/product/:id': ProductScreen,
+	// '/order/:id': OrderScreen,
+	// '/cart/:id': CartScreen,
+	// '/cart': CartScreen,
+	'/login': LoginScreen,
+	'/register': RegisterScreen,
+	'/profile': ProfileScreen,
+	// '/shipping': ShippingScreen,
+	// '/payment': PaymentScreen,
+	// '/placeorder': PlaceOrderScreen,
+	'/dashboard': DashboardScreen,
+	'/productlist': ProductListScreen,
+	// '/orderlist': OrderListScreen,
+};
