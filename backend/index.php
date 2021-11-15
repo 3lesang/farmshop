@@ -2,6 +2,7 @@
 require 'vendor/autoload.php';
 require_once 'src/api/product/ProductAPI.php';
 require_once 'src/api/user/UserAPI.php';
+require_once 'src/api/summary.php';
 require_once 'auth.php';
 
 $app = new \Slim\App;
@@ -31,8 +32,6 @@ $app->get('/users', "getUsers");//->add("isAdmin")->add("isAuth");
 // // get one user by id
 $app->get('/users/{id}', "getUserById")->add("isAdmin")->add("isAuth");
 
-// // adding a user
-// $app->post('/users', "createUser");
 
 // login
 $app->post('/user/login', "login");
@@ -46,4 +45,8 @@ $app->put('/users', "updateUser")->add("isAuth");
 
 // // delete a user
 $app->delete('/users/{id}', "deleteUser")->add("isAdmin")->add("isAuth");
+
+
+
+$app->get('/summary', "getSummary");
 $app->run();

@@ -19,8 +19,9 @@ const LoginScreen = {
                     	pw: document.getElementById('password').value,
                 });
 				hideLoading();
+                console.log(data);
 				if (!data.full_name) {
-					showMessage('loi');
+					showMessage(data.mess);
 				} else {
 					setUserInfo(data);
 					redirectUser();

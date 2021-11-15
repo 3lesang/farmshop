@@ -1,5 +1,5 @@
-// import { update, getMyOrders } from '../api.js';
-import { updateUser } from '../api/auth.js';
+import { getMyOrders } from '../api/order.js';
+import { updateUser } from '../api/user.js';
 import { getUserInfo, setUserInfo, clearUser } from '../localStorage.js';
 import { showLoading, hideLoading, showMessage } from '../utils.js';
 
@@ -20,12 +20,12 @@ const ProfileScreen = {
 	        pw: document.getElementById('password').value,
 	      });
 	      hideLoading();
-	      if (data.error) {
-	        showMessage(data.error);
-	      } else {
-	        setUserInfo(data);
-	        document.location.hash = '/';
-	      }
+	    //   if (data.error) {
+	    //     showMessage(data.error);
+	    //   } else {
+	    //     setUserInfo(data);
+	    //     document.location.hash = '/';
+	    //   }
 	    });
 	},
 	render: async () => {
@@ -33,7 +33,8 @@ const ProfileScreen = {
 		if (!full_name) {
 			document.location.hash = '/';
 		}
-		// const orders = await getMyOrders();
+		const orders = await getMyOrders();
+
 		return `
     <div class="content profile">
       <div class="profile-info">
@@ -80,8 +81,8 @@ const ProfileScreen = {
           </thead>
           <tbody>
             ${
-				//orders.length === 0
-				true
+				// orders.length === 0 
+                orders.error
 					? `<tr><td colspan="6">No Order Found.</tr>`
 					: orders
 							.map(

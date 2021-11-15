@@ -1,38 +1,37 @@
-/* eslint-disable no-new */
-// import Chartist from 'chartist';
 import DashboardMenu from '../components/DashboardMenu.js';
-// import { getSummary } from '../api.js';
+import { getSummary } from '../api/summary.js';
 
 let summary = {};
 const DashboardScreen = {
-	// after_render: () => {
-	// 	new Chartist.Line(
-	// 		'.ct-chart-line',
-	// 		{
-	// 			labels: summary.dailyOrders.map((x) => x._id),
-	// 			series: [summary.dailyOrders.map((x) => x.sales)],
-	// 		},
-	// 		{
-	// 			showArea: true,
-	// 		}
-	// 	);
-	// 	new Chartist.Pie(
-	// 		'.ct-chart-pie',
-	// 		{
-	// 			labels: summary.productCategories.map((x) => x._id),
-	// 			series: summary.productCategories.map((x) => x.count),
-	// 		},
-	// 		{
-	// 			donut: true,
-	// 			donutWidth: 60,
-	// 			startAngle: 270,
-	// 			showLabel: true,
-	// 			donutSolid: true,
-	// 		}
-	// 	);
-	// },
+	after_render: () => {
+		// new Chartist.Line(
+		// 	'.ct-chart-line',
+		// 	{
+		// 		labels: summary.dailyOrders.map((x) => x._id),
+		// 		series: [summary.dailyOrders.map((x) => x.sales)],
+		// 	},
+		// 	{
+		// 		showArea: true,
+		// 	}
+		// );
+		new Chartist.Pie(
+			'.ct-chart-pie',
+			{
+				labels: summary.category.map((x) => x.name),
+				series: summary.category.map((x) => x.id),
+			},
+			{
+				donut: true,
+				donutWidth: 60,
+				startAngle: 270,
+				showLabel: true,
+				donutSolid: true,
+			}
+		);
+	},
 	render: async () => {
-		// summary = await getSummary();
+		summary = await getSummary();
+        console.log(summary);
 		return `
     <div class="dashboard">
       ${DashboardMenu.render({ selected: 'dashboard' })}
@@ -44,7 +43,7 @@ const DashboardScreen = {
             <div class="summary-title color1">
               <span><i class="fa fa-users"></i> Users</span>
             </div>
-            <div class="summary-body">${/*summary.users[0].numUsers*/''}</div>
+            <div class="summary-body">${summary.user.total}</div>
           </li>
           <li>
             <div class="summary-title color2">
@@ -56,7 +55,7 @@ const DashboardScreen = {
             <div class="summary-title color3">
               <span><i class="fa fa-users"></i> Sales</span>
             </div>
-            <div class="summary-body">$${/*summary.orders[0].totalSales*/''}</div>
+            <div class="summary-body">VND ${/*summary.orders[0].totalSales*/''}</div>
           </li>
         </ul>
         <div class="charts">

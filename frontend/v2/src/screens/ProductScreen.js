@@ -11,33 +11,33 @@ import Rating from '../components/Rating.js';
 import { getUserInfo } from '../localStorage.js';
 
 const ProductScreen = {
-	// after_render: () => {
-	// 	const request = parseRequestUrl();
-	// 	document.getElementById('add-button').addEventListener('click', () => {
-	// 		document.location.hash = `/cart/${request.id}`;
-	// 	});
+	after_render: () => {
+		const request = parseRequestUrl();
+		document.getElementById('add-button').addEventListener('click', () => {
+			document.location.hash = `/cart/${request.id}`;
+		});
 
-	// 	if (document.getElementById('review-form')) {
-	// 		document
-	// 			.getElementById('review-form')
-	// 			.addEventListener('submit', async (e) => {
-	// 				e.preventDefault();
-	// 				showLoading();
-	// 				const data = await createReview(request.id, {
-	// 					comment: document.getElementById('comment').value,
-	// 					rating: document.getElementById('rating').value,
-	// 				});
-	// 				hideLoading();
-	// 				if (data.error) {
-	// 					showMessage(data.error);
-	// 				} else {
-	// 					showMessage('Review Added Successfully', () => {
-	// 						rerender(ProductScreen);
-	// 					});
-	// 				}
-	// 			});
-	// 	}
-	// },
+		// if (document.getElementById('review-form')) {
+		// 	document
+		// 		.getElementById('review-form')
+		// 		.addEventListener('submit', async (e) => {
+		// 			e.preventDefault();
+		// 			showLoading();
+		// 			const data = await createReview(request.id, {
+		// 				comment: document.getElementById('comment').value,
+		// 				rating: document.getElementById('rating').value,
+		// 			});
+		// 			hideLoading();
+		// 			if (data.error) {
+		// 				showMessage(data.error);
+		// 			} else {
+		// 				showMessage('Review Added Successfully', () => {
+		// 					rerender(ProductScreen);
+		// 				});
+		// 			}
+		// 		});
+		// }
+	},
 	render: async () => {
 		const request = parseRequestUrl();
 		showLoading();

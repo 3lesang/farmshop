@@ -17,7 +17,9 @@ const Header = {
     <input type="text" name="q" id="q" value="${
 		value || ''
 	}" placeholder="tìm kiếm..."/> 
-    <button type="submit">Search</button>
+    <button type="submit">
+    search
+    </button>
   </form>        
   </div>
 	<div>

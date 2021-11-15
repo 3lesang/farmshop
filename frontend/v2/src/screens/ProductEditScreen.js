@@ -24,13 +24,12 @@ const ProductEditScreen = {
 					countInStock: document.getElementById('countInStock').value,
 					detail: document.getElementById('description').value,
 				});
-				hideLoading();
-				document.location.hash = '/productlist';
-				// if (data.error) {
-				//   showMessage(data.error);
-				// } else {
-				//   document.location.hash = '/productlist';
-				// }
+				if (data.error) {
+				  showMessage(data.error);
+				} else {
+                    hideLoading();
+				  document.location.hash = '/productlist';
+				}
 			});
 		document
 			.getElementById('image-file')

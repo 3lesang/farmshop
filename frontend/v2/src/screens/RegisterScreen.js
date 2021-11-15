@@ -1,5 +1,5 @@
 import { register } from '../api/auth.js';
-import { getUserInfo, setUserInfo } from '../localStorage.js';
+import { getUserInfo } from '../localStorage.js';
 import {
 	showLoading,
 	hideLoading,
@@ -23,12 +23,11 @@ const RegisterScreen = {
 			};
 			// console.log(user);
 			const res = await register(user);
-			hideLoading();
             console.log(res);
 			if (res) {
+                hideLoading();
 				document.location.hash = '/login';
 			} else {
-				// console.log(res);
 				showMessage(res);
 			}
 		});

@@ -39,36 +39,8 @@ export const register = async (user) => {
 			throw new Error(response.Error);
 		}
 		const data = await res.json();
-        // console.log(data);
-		return true;
+		return data;
 	} catch (error) {
 		return error.message;
-	}
-};
-export const updateUser = async ({ full_name, username, pw }) => {
-	try {
-		const { id, token } = getUserInfo();
-        const url = `http://localhost:8080/users`;
-		const response = await fetch(url, {
-			method: 'PUT',
-			headers: {
-				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`,
-			},
-			body: JSON.stringify({
-                id,
-				full_name,
-				username,
-				pw,
-			}),
-		});
-		if (response.statusText !== 'OK') {
-			throw new Error(response.Error);
-		}
-        const data = await response.json();
-		return data;
-	} catch (err) {
-		console.log(err);
-		return { error: err.message };
 	}
 };

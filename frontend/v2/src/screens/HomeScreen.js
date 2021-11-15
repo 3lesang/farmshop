@@ -32,7 +32,7 @@ const HomeScreen = {
 				})}
 		    </div>
 		    <div class="product-brand">
-		      ${product.brand}
+		      ${product.categories_id}
 		    </div>
 		    <div class="product-price">
             ${product.price} VNĐ

@@ -35,9 +35,10 @@ include_once 'src/config/DB.php';
         $this->conn->beginTransaction();
         $stmt->execute(['sample', 'sample', 'sample', 'sample']);
 
+        $id = $this->conn->lastInsertId();
         $this->conn->commit();
 
-        return $this->conn->lastInsertId();
+        return $id;
         
 	  } catch(PDOExecption $e) {
 	        $this->conn->rollback();

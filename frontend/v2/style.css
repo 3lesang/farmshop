@@ -30,12 +30,11 @@ textarea {
 	border: 0.1rem #808080 solid;
 	border-radius: 0.5rem;
 }
-input:hover,
-button:hover {
+input:hover{
 	border: 0.1rem #404040 solid;
 }
 button.primary {
-	background-color: #f0c040;
+	background-color: #8aabf1;
 }
 .overlay {
 	display: none;
@@ -111,6 +110,7 @@ header a:hover {
 	font-size: 3rem;
 	padding-left: 1rem;
 }
+
 main {
 	grid-area: main;
 }
@@ -574,4 +574,13 @@ ul.categories {
 .review li {
 	margin-bottom: 1rem;
 	padding-bottom: 1rem;
+}
+
+
+.edit-button {
+    padding: 8px;
+}
+
+.ct-label {
+    font-size: 2rem;
 }
