@@ -4,8 +4,11 @@ require_once 'src/api/product/ProductAPI.php';
 require_once 'src/api/user/UserAPI.php';
 require_once 'src/api/summary.php';
 require_once 'auth.php';
+require_once 'src/api/cors.php';
 
 $app = new \Slim\App;
+
+$app->add("cors");
 
 // Routes
 // all books
