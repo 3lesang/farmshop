@@ -30,7 +30,7 @@ $app->put('/products/{id}', "updateProduct");//->add("isAdmin")->add("isAuth");
 $app->delete('/products/{id}', "deleteProduct")->add("isAdmin")->add("isAuth");
 
 // all users
-$app->get('/users', "getUsers");//->add("isAdmin")->add("isAuth");
+$app->get('/users', "getUsers")->add("isAdmin")->add("isAuth");
 
 // // get one user by id
 $app->get('/users/{id}', "getUserById")->add("isAdmin")->add("isAuth");

@@ -3,14 +3,14 @@ import { getProducts } from '../api/product.js';
 import { parseRequestUrl } from '../utils.js';
 
 const HomeScreen = {
-	render: async () => {
-		const { value } = parseRequestUrl();
-		const products = await getProducts({ searchKeyword: value });
-		if (products.error) {
-			return `<div class="error">${products.error}</div>`;
-		}
+    render: async () => {
+        const { value } = parseRequestUrl();
+        const products = await getProducts({ searchKeyword: value });
+        if (products.error) {
+            return `<div class="error">${products.error}</div>`;
+        }
 
-		return `
+        return `
 		<ul class="products">
 		  ${products
 				.map(
@@ -43,6 +43,6 @@ const HomeScreen = {
 				)
 				.join('\n')}
 		`;
-	},
+    },
 };
 export default HomeScreen;
