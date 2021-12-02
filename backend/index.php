@@ -2,6 +2,9 @@
 require 'vendor/autoload.php';
 require_once 'src/api/product/ProductAPI.php';
 require_once 'src/api/user/UserAPI.php';
+require_once 'src/api/image_slider/Image_SliderAPI.php';
+require_once 'src/api/category/CategoryAPI.php';
+require_once 'src/api/supplier/SupplierAPI.php';
 require_once 'src/api/summary.php';
 require_once 'auth.php';
 require_once 'src/api/cors.php';
@@ -11,6 +14,17 @@ $app = new \Slim\App;
 $app->add("cors");
 
 // Routes
+
+$app->get('/image_sliders', "getImage_Sliders");
+
+$app->get('/categories', "getCategories");
+
+$app->get('/categories/{key}', "getCategoryByKey");
+
+$app->get('/suppliers', "getSuppliers");
+
+$app->get('/suppliers/{key}', "getSupplierByKey");
+
 // all books
 $app->get('/products', "getProducts");
 
