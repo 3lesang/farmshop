@@ -15,4 +15,13 @@ class CategoryModel
 	  $this->conn = null;
 	  return $stmt->fetchAll(PDO::FETCH_ASSOC);
 	}
+	public function findByKey($key) {
+		$sql = "SELECT * FROM suppliers WHERE id=:id";
+  
+		$stmt = $this->conn->prepare($sql);
+		$stmt->execute([':id' => $key]);
+  
+		$this->conn = null;
+		return $stmt->fetch(PDO::FETCH_ASSOC);
+	}
 }
