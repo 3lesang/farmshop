@@ -10,7 +10,7 @@ class Image_SliderModel
 	  $this->conn = $db->connect();
 	}
 	public function getAll() {
-	  $sql = "SELECT * FROM image_sliders";
+	  $sql = "SELECT * FROM image_slider";
 	  $stmt = $this->conn->query($sql);
 	  $this->conn = null;
 	  return $stmt->fetchAll(PDO::FETCH_ASSOC);

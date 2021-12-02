@@ -22,22 +22,17 @@ const router = async () => {
     aside.innerHTML = await Aside.render();
     await Aside.after_render();
 
-<<<<<<< HEAD
     const main = document.getElementById('main-container');
     main.innerHTML = await screen.render();
 
     if (screen.after_render) await screen.after_render();
     hideLoading();
-=======
-	const main = document.getElementById('main-container');
-	main.innerHTML = await screen.render();
-	if (screen.after_render) await screen.after_render();
 
-	const footer = document.getElementById('footer-container');
-	footer.innerHTML = await Footer.render();
-	await Footer.after_render();
-	hideLoading();
->>>>>>> 5bd63976dab1b9dc13f155c6fbc16a17bc325ac5
+    // 	const footer = document.getElementById('footer-container');
+    // 	footer.innerHTML = await Footer.render();
+    // 	await Footer.after_render();
+    // 	hideLoading();
+    // >>>>>>> 5bd63976dab1b9dc13f155c6fbc16a17bc325ac5
 };
 
 
