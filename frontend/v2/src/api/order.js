@@ -96,7 +96,8 @@ export const getMyOrders = async () => {
         if (response.statusText !== 'OK') {
             throw new Error(response.data.message);
         }
-        return response.data;
+        const data = response.json();
+        return data;
     } catch (err) {
         return { error: err.response ? err.response.data.message : err.message };
     }

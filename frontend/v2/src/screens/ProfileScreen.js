@@ -4,38 +4,38 @@ import { getUserInfo, setUserInfo, clearUser } from '../localStorage.js';
 import { showLoading, hideLoading, showMessage } from '../utils.js';
 
 const ProfileScreen = {
-	after_render: () => {
-	  document.getElementById('signout-button').addEventListener('click', () => {
-	    clearUser();
-	    document.location.hash = '/';
-	  });
-	  document
-	    .getElementById('profile-form')
-	    .addEventListener('submit', async (e) => {
-	      e.preventDefault();
-	      showLoading();
-	      const data = await updateUser({
-	        full_name: document.getElementById('name').value,
-	        username: document.getElementById('email').value,
-	        pw: document.getElementById('password').value,
-	      });
-	      hideLoading();
-	    //   if (data.error) {
-	    //     showMessage(data.error);
-	    //   } else {
-	    //     setUserInfo(data);
-	    //     document.location.hash = '/';
-	    //   }
-	    });
-	},
-	render: async () => {
-		const { full_name, username } = getUserInfo();
-		if (!full_name) {
-			document.location.hash = '/';
-		}
-		const orders = await getMyOrders();
+    after_render: () => {
+        document.getElementById('signout-button').addEventListener('click', () => {
+            clearUser();
+            document.location.hash = '/';
+        });
+        document
+            .getElementById('profile-form')
+            .addEventListener('submit', async (e) => {
+                e.preventDefault();
+                showLoading();
+                const data = await updateUser({
+                    full_name: document.getElementById('name').value,
+                    username: document.getElementById('email').value,
+                    pw: document.getElementById('password').value,
+                });
+                hideLoading();
+                //   if (data.error) {
+                //     showMessage(data.error);
+                //   } else {
+                //     setUserInfo(data);
+                //     document.location.hash = '/';
+                //   }
+            });
+    },
+    render: async () => {
+        const { full_name, username } = getUserInfo();
+        if (!full_name) {
+            document.location.hash = '/';
+        }
+        const orders = await getMyOrders();
 
-		return `
+        return `
     <div class="content profile">
       <div class="profile-info">
       <div class="form-container">
@@ -81,14 +81,14 @@ const ProfileScreen = {
           </thead>
           <tbody>
             ${
-				// orders.length === 0 
-                orders.error
+				orders.length === 0 
+                
 					? `<tr><td colspan="6">No Order Found.</tr>`
 					: orders
 							.map(
 								(order) => `
           <tr>
-            <td>${order._id}</td>
+            <td>${order.id}</td>
             <td>${order.createdAt}</td>
             <td>${order.totalPrice}</td>
             <td>${order.paidAt || 'No'}</td>
@@ -107,6 +107,6 @@ const ProfileScreen = {
 
     
     `;
-	},
+    },
 };
 export default ProfileScreen;

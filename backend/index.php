@@ -27,6 +27,7 @@ $app->get('/suppliers', "getSuppliers");
 $app->get('/suppliers/{key}', "getSupplierByKey");
 
 $app->get('/orders', "getOrders");
+$app->get('/orders/mine', "getMyOrders")->add("isAuth");
 
 $app->post('/orders', "createOrder");
 

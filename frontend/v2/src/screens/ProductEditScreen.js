@@ -56,13 +56,11 @@ const ProductEditScreen = {
         console.log(product);
         return `
     <div class="content-admin">
-      <div>
-        <a href="/#/productlist">Back to products</a>
-      </div>
       <div class="form-container">
-      	
         <form id="edit-product-form">
+        	<a href="/#/productlist"><i class="fas fa-arrow-left"></i></a>
         	<h1>Edit Product ${product.id}</h1><br>
+        	
           <ul class="form-product">
             
             <li>
@@ -92,7 +90,7 @@ const ProductEditScreen = {
             </li>
             <li>
               <label for="description">Description</label>
-              <textarea name="description" id="description" style="width: 580px; height: 334px;">${product.detail}</textarea>
+              <textarea name="description" id="description" style="width: 899px; height: 342px;">${product.detail}</textarea>
               
             </li>
             <li>
