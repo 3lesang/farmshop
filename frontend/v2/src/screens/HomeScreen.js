@@ -35,7 +35,8 @@ const HomeScreen = {
 					</figure>				
 				</div> 
 			</section>
-                
+                <div class="product-section">
+                	<h1>Trái cây</h1>
                 <ul class = "products" >
                 ${
                     products
@@ -43,6 +44,7 @@ const HomeScreen = {
                             (product) => `
 		  <li>
 		    <div class="product">
+		    <i class="fas fa-cart-plus cart-icon"></i>
 		      <a href="/#/product/${product.code ? product.code : product.id}">
 		        <img src="${product.image_display}" alt="${product.name}" />
 		      </a>
@@ -67,6 +69,10 @@ const HomeScreen = {
                         )
                         .join('\n')
                 }
+              </div>
+              <div product-section>
+              	
+              </div>
             <footer>
 				<div class="row">
 				    <a href="#"><i class="fa fa-facebook"></i></a>

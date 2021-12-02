@@ -55,7 +55,7 @@ const UserListScreen = {
               <td>${user.id}</td>
               <td>${user.full_name}</td>
               <td>${user.username}</td>
-              <td>................</td>
+              <td></td>
               <td>${user.isAdmin}</td>
               <td>
               <button id="${user.id}" class="delete-button"><i class="fas fa-trash"></i></button>

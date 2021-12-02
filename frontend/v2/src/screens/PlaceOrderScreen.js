@@ -42,14 +42,15 @@ const PlaceOrderScreen = {
             .addEventListener('click', async () => {
                 const order = convertCartToOrder();
                 showLoading();
+                console.log(order);
                 const data = await createOrder(order);
                 hideLoading();
-                if (data.error) {
-                    showMessage(data.error);
-                } else {
-                    cleanCart();
-                    document.location.hash = `/order/${data.order._id}`;
-                }
+                // if (data.error) {
+                //     showMessage(data.error);
+                // } else {
+                //     cleanCart();
+                //     document.location.hash = `/order/${data.order._id}`;
+                // }
             });
     },
     render: () => {

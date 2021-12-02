@@ -9,11 +9,15 @@ function getSummary($request, $response) {
     $orderModel = new OrderModel();
     $users = $userModel->countUser();
     $categories = $categoryModel->getAll();
-    $orders = $orderModel->getAll();
+    $countOrder = $orderModel->countOrder();
+    $totalMoney = $orderModel->totalMoney();
+    $dailyOrders = $orderModel->dailyOrders();
     $data = [
     	'user' => $users,
     	'category' => $categories,
-    	'order' => $orders
+    	'order' => $countOrder,
+    	'dailyOrders' => $dailyOrders,
+    	'money' => $totalMoney
     ];
 
     // custom json response

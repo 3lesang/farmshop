@@ -1,5 +1,5 @@
 <?php
-class Product {
+class Order {
 
 	private $id;
 	private $order_date;

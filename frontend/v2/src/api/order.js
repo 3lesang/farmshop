@@ -2,7 +2,7 @@ import { apiUrl } from '../conf.js';
 import { getUserInfo } from '../localStorage.js';
 export const createOrder = async (order) => {
     try {
-        const url = `${apiUrl}/api/orders`;
+        const url = `${apiUrl}/orders`;
         const { token } = getUserInfo();
         const response = await fetch(url, {
             method: 'POST',
@@ -22,7 +22,7 @@ export const createOrder = async (order) => {
 };
 export const getOrders = async () => {
     try {
-        const url = `${apiUrl}/api/orders`;
+        const url = `${apiUrl}/orders`;
         const { token } = getUserInfo();
         const response = await fetch(url, {
             method: 'GET',
@@ -34,15 +34,17 @@ export const getOrders = async () => {
         if (response.statusText !== 'OK') {
             throw new Error(response.data.message);
         }
-        return response.data;
+        const data = await response.json();
+        return data;
     } catch (err) {
         console.log(err);
         return { error: err.response.data.message || err.message };
     }
+
 };
 export const deleteOrder = async (orderId) => {
     try {
-        const url = `${apiUrl}/api/orders/${orderId}`;
+        const url = `${apiUrl}/orders/${orderId}`;
         const { token } = getUserInfo();
         const response = await fetch(url, {
 
@@ -55,14 +57,15 @@ export const deleteOrder = async (orderId) => {
         if (response.statusText !== 'OK') {
             throw new Error(response.data.message);
         }
-        return response.data;
+        const data = await response.json();
+        return data;
     } catch (err) {
         return { error: err.response.data.message || err.message };
     }
 };
 export const getOrder = async (id) => {
     try {
-        const url = `${apiUrl}/api/orders/${id}`;
+        const url = `${apiUrl}/orders/${id}`;
         const { token } = getUserInfo();
         const response = await fetch(url, {
             method: 'GET',
@@ -81,7 +84,7 @@ export const getOrder = async (id) => {
 };
 export const getMyOrders = async () => {
     try {
-        const url = `${apiUrl}/api/orders/mine`;
+        const url = `${apiUrl}/orders/mine`;
         const { token } = getUserInfo();
         const response = await fetch(url, {
             method: 'GET',

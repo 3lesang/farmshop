@@ -50,7 +50,7 @@ const ProductListScreen = {
       
       <div class="product-list">
         <table>
-        	<caption>Products</caption>
+        	<caption>PRODUCTS</caption>
           <thead>
             <tr>
               <th>ID</th>

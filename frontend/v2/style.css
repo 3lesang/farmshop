@@ -69,7 +69,8 @@ table td {
 
 table th {
     text-align: left;
-    background: #eee;
+    background-color: #1f1d2b;
+    color: #fff;
     position: sticky;
     padding: 16px;
     top: 10vh;
@@ -124,9 +125,8 @@ table th {
     grid-template-areas:
         'header'
         'main'
-        'footer';
+    ;
     grid-template-columns: 1fr;
-    grid-template-rows: 7rem 1fr 5rem;
     height: 100%;
 }
 
@@ -142,7 +142,10 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem;
+    padding: 1rem;
+    z-index: 1;
+
+
 }
 
 header a {
@@ -161,6 +164,11 @@ header a:hover {
     padding-left: 1rem;
 }
 
+.search {
+    width: 50vh;
+
+}
+
 main {
     grid-area: main;
     overflow-y: scroll;
@@ -170,12 +178,24 @@ main {
 
 
 /* Products */
+.product-section {
+    background-color: #fff;
+    margin-top: 32px;
+
+}
+
+.product-section h1 {
+    text-align: center;
+
+}
+
 .products {
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;
     padding: 0;
     margin: 0;
+
     justify-content: center;
 }
 
@@ -184,14 +204,17 @@ main {
     margin: 1rem;
     margin-bottom: 0;
     height: 42rem;
-    border-top: 0.2rem #e0e0e0 solid;
+
 }
 
 .product {
     display: flex;
     flex-direction: column;
+    border: 1px solid #eee;
+    border-radius: 4px;
     justify-content: space-around;
     height: 100%;
+    align-items: center;
 }
 
 .product img {
@@ -211,11 +234,29 @@ main {
 
 .product-price {
     font-size: 2rem;
+    border: 1px solid #eee;
+    padding: 8px;
+    border-radius: 4px;
 }
 
 .product-price span {
     font-size: 1.2rem;
 }
+
+.cart-icon {
+    visibility: hidden;
+
+}
+
+.product:hover {
+    box-shadow: 1px 0 4px rgba(0, 0, 0, .2);
+    cursor: pointer;
+}
+
+.product:hover .cart-icon {
+    visibility: visible;
+}
+
 
 /* Rating */
 .rating {
@@ -514,7 +555,14 @@ tbody>tr:nth-child(odd) {
 }
 
 td {
-    padding: 0.5rem;
+    padding: 1rem;
+}
+
+caption {
+    font-size: 2rem;
+    padding: 8px;
+    background-color: #1f1d2b;
+    color: #fff
 }
 
 /* Dashboard */
@@ -525,6 +573,7 @@ td {
     flex-wrap: wrap;
     background-color: #fff;
     overflow-y: scroll;
+    z-index: 2;
 
 }
 
@@ -563,7 +612,7 @@ td {
     display: flex;
     padding: 1rem;
     color: #fff;
-    justify-content: space-between;
+
 }
 
 .dashboard-menu a:hover {
@@ -592,6 +641,11 @@ td {
     padding: 0.5rem;
 }
 
+.order-list table tbody {
+    margin-top: 32px;
+
+}
+
 .tr-action {
     width: 10rem;
 }
@@ -606,9 +660,9 @@ td {
 }
 
 .summary-items>li {
-    border: 0.1rem #c0c0c0 solid;
+    border: 0.1rem #eee solid;
     margin: 2rem;
-    border-radius: 0.5rem;
+    border-radius: 4px;
     flex: 1 1 20rem;
 }
 
@@ -753,6 +807,7 @@ ul.categories {
 footer {
     background: #000;
     width: 100%;
+    margin-top: 32px;
 
     padding: 30px 0px;
     font-family: 'Play', sans-serif;
@@ -819,6 +874,11 @@ form {
     border-radius: 4px;
 }
 
+#search-form {
+    width: 100%;
+
+}
+
 form>.textbox {
     outline: 0;
     height: 42px;
@@ -828,6 +888,8 @@ form>.textbox {
     background-color: rgba(255, 255, 255, 0.8);
     color: #212121;
     border: 0;
+    width: 91%;
+
     float: left;
     -webkit-border-radius: 4px 0 0 4px;
     border-radius: 4px 0 0 4px;
@@ -844,7 +906,7 @@ form>.button {
     background-color: rgba(38, 50, 56, 0.8);
     float: left;
     height: 42px;
-    width: 42px;
+    width: 9%;
     text-align: center;
     line-height: 42px;
     border: 0;
@@ -868,7 +930,11 @@ form>.button:hover {
     margin: auto;
 }
 
+#create-product-button {
+    background-color: #fff;
+    border-radius: 4px;
 
+}
 
 /*#create-product-button {
     position: fixed;
@@ -881,11 +947,10 @@ form>.button:hover {
 .auto-slider {
     position: relative;
     box-sizing: content-box;
-    padding: 10px 10px;
     background: #fff;
-    max-width: 70vw;
+    max-width: 85vw;
     max-height: 80vh;
-    margin: 0 auto;
+    margin: 7vh auto;
     overflow: hidden;
     border-radius: 4px;
     box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
@@ -900,6 +965,7 @@ div#slider {
 
 div#slider figure img {
     width: 20%;
+    height: 100%;
     float: left;
     object-fit: cover;
 }

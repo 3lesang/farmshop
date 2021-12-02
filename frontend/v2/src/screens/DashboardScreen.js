@@ -4,16 +4,14 @@ import { getSummary } from '../api/summary.js';
 let summary = {};
 const DashboardScreen = {
     after_render: () => {
-        // new Chartist.Line(
-        // 	'.ct-chart-line',
-        // 	{
-        // 		labels: summary.dailyOrders.map((x) => x._id),
-        // 		series: [summary.dailyOrders.map((x) => x.sales)],
-        // 	},
-        // 	{
-        // 		showArea: true,
-        // 	}
-        // );
+        new Chartist.Line(
+            '.ct-chart-line', {
+                labels: summary.dailyOrders.map((x) => x.id),
+                series: [summary.dailyOrders.map((x) => x.total_money)],
+            }, {
+                showArea: true,
+            }
+        );
         new Chartist.Pie(
             '.ct-chart-pie', {
                 labels: summary.category.map((x) => x.name),
@@ -46,15 +44,15 @@ const DashboardScreen = {
           </li>
           <li>
             <div class="summary-title color2">
-              <span><i class="fa fa-users"></i> Orders</span>
+              <span><i class="fas fa-shopping-bag"></i> Orders</span>
             </div>
-            <div class="summary-body">${/*summary.orders[0].numOrders*/''}</div>
+            <div class="summary-body">${summary.order.total}</div>
           </li>
           <li>
             <div class="summary-title color3">
               <span><i class="fas fa-money-check-alt"></i> Sales</span>
             </div>
-            <div class="summary-body">VND ${/*summary.orders[0].totalSales*/''}</div>
+            <div class="summary-body">${summary.money.sales} VND</div>
           </li>
         </ul>
         <div class="charts">

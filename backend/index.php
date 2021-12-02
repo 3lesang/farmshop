@@ -6,6 +6,7 @@ require_once 'src/api/image_slider/Image_SliderAPI.php';
 require_once 'src/api/category/CategoryAPI.php';
 require_once 'src/api/supplier/SupplierAPI.php';
 require_once 'src/api/summary.php';
+require_once 'src/api/order/OrderAPI.php';
 require_once 'auth.php';
 require_once 'src/api/cors.php';
 
@@ -25,6 +26,11 @@ $app->get('/suppliers', "getSuppliers");
 
 $app->get('/suppliers/{key}', "getSupplierByKey");
 
+$app->get('/orders', "getOrders");
+
+$app->post('/orders', "createOrder");
+
+$app->delete('/orders/{id}', "deleteOrder");
 // all books
 $app->get('/products', "getProducts");
 

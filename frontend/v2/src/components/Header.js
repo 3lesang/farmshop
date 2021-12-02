@@ -21,8 +21,8 @@ const Header = {
         
   </div>
 	<div>
-	${full_name ? `<a href="/#/profile">${full_name}</a>` : `<a href="/#/login">Login</a>`}
-	  <a href="/#/cart">Cart</a>
+	${full_name ? `<a href="/#/profile"><i class="far fa-user"></i> ${full_name}</a>` : `<a href="/#/login">Login</a>`}
+	  <a href="/#/cart"><i class="fas fa-shopping-cart"></i> Cart</a>
 	  ${isAdmin == '1' ? `<a href="/#/dashboard">Dashboard</a>` : ''}
 	</div>`;
     },

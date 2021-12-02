@@ -121,6 +121,7 @@ function login($request, $response) {
     try {
         $json = $request->getBody();
         $data = json_decode($json, true);
+        
         $userModel = new UserModel();
         $res = $userModel->login($data['username'], $data['pw']);
       if($res) {
