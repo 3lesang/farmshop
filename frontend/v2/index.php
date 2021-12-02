@@ -21,9 +21,7 @@
         <aside id="aside-container"></aside>
         <main id="main-container">
         </main>
-        <footer>
-            All rights reserved @2021
-        </footer>
+        
     </div>
     <script type="module" src="src/index.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.4/chartist.min.js" integrity="sha512-9rxMbTkN9JcgG5euudGbdIbhFZ7KGyAuVomdQDI9qXfPply9BJh0iqA7E/moLCatH2JD4xBGHwV6ezBkCpnjRQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

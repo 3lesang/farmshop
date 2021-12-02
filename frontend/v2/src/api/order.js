@@ -2,17 +2,17 @@ import { apiUrl } from '../conf.js';
 import { getUserInfo } from '../localStorage.js';
 export const createOrder = async (order) => {
     try {
+        const url = `${apiUrl}/api/orders`;
         const { token } = getUserInfo();
-        const response = await axios({
-            url: `${apiUrl}/api/orders`,
+        const response = await fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`,
             },
-            data: order,
+            body: JSON.stringify(order),
         });
-        if (response.statusText !== 'Created') {
+        if (response.statusText !== 'OK') {
             throw new Error(response.data.message);
         }
         return response.data;
@@ -22,9 +22,9 @@ export const createOrder = async (order) => {
 };
 export const getOrders = async () => {
     try {
+        const url = `${apiUrl}/api/orders`;
         const { token } = getUserInfo();
-        const response = await axios({
-            url: `${apiUrl}/api/orders`,
+        const response = await fetch(url, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -42,9 +42,10 @@ export const getOrders = async () => {
 };
 export const deleteOrder = async (orderId) => {
     try {
+        const url = `${apiUrl}/api/orders/${orderId}`;
         const { token } = getUserInfo();
-        const response = await axios({
-            url: `${apiUrl}/api/orders/${orderId}`,
+        const response = await fetch(url, {
+
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -61,12 +62,13 @@ export const deleteOrder = async (orderId) => {
 };
 export const getOrder = async (id) => {
     try {
+        const url = `${apiUrl}/api/orders/${id}`;
         const { token } = getUserInfo();
-        const response = await axios({
-            url: `${apiUrl}/api/orders/${id}`,
+        const response = await fetch(url, {
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
+                'Authorization': `Bearer ${token}`,
             },
         });
         if (response.statusText !== 'OK') {
@@ -79,9 +81,10 @@ export const getOrder = async (id) => {
 };
 export const getMyOrders = async () => {
     try {
+        const url = `${apiUrl}/api/orders/mine`;
         const { token } = getUserInfo();
-        const response = await axios({
-            url: `${apiUrl}/api/orders/mine`,
+        const response = await fetch(url, {
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`,
@@ -98,8 +101,9 @@ export const getMyOrders = async () => {
 
 
 export const getPaypalClientId = async () => {
-    const response = await axios({
-        url: `${apiUrl}/api/paypal/clientId`,
+    const url = `${apiUrl}/api/paypal/clientId`;
+    const response = await fetch(url, {
+        method: 'GET',
         headers: {
             'Content-Type': 'application/json',
         },
@@ -112,15 +116,15 @@ export const getPaypalClientId = async () => {
 
 export const payOrder = async (orderId, paymentResult) => {
     try {
+        const url = `${apiUrl}/api/orders/${orderId}/pay`;
         const { token } = getUserInfo();
-        const response = await axios({
-            url: `${apiUrl}/api/orders/${orderId}/pay`,
+        const response = await fetch(url, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
+                'Authorization': `Bearer ${token}`,
             },
-            data: paymentResult,
+            body: JSON.stringify(vpaymentResult)
         });
         if (response.statusText !== 'OK') {
             throw new Error(response.data.message);
@@ -132,13 +136,13 @@ export const payOrder = async (orderId, paymentResult) => {
 };
 export const deliverOrder = async (orderId) => {
     try {
+        const url = `${apiUrl}/api/orders/${orderId}/deliver`;
         const { token } = getUserInfo();
-        const response = await axios({
-            url: `${apiUrl}/api/orders/${orderId}/deliver`,
+        const response = await fetch(url, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
+                'Authorization': `Bearer ${token}`,
             },
         });
         if (response.statusText !== 'OK') {

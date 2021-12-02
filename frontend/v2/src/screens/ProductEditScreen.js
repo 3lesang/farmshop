@@ -1,70 +1,70 @@
 import {
-	parseRequestUrl,
-	showLoading,
-	showMessage,
-	hideLoading,
+    parseRequestUrl,
+    showLoading,
+    showMessage,
+    hideLoading,
 } from '../utils.js';
 import { getProduct, updateProduct, uploadProductImage } from '../api/product.js';
 
 const ProductEditScreen = {
-	after_render: () => {
-		const request = parseRequestUrl();
-		document
-			.getElementById('edit-product-form')
-			.addEventListener('submit', async (e) => {
-				e.preventDefault();
-				showLoading();
-				const data = await updateProduct({
-					id: request.id,
-					name: document.getElementById('name').value,
-					price: document.getElementById('price').value,
-					image_display: document.getElementById('image').value,
-					code: document.getElementById('code').value,
-					category: document.getElementById('category').value,
-					countInStock: document.getElementById('countInStock').value,
-					detail: document.getElementById('description').value,
-				});
-				if (data.error) {
-				  showMessage(data.error);
-				} else {
+    after_render: () => {
+        const request = parseRequestUrl();
+        document
+            .getElementById('edit-product-form')
+            .addEventListener('submit', async (e) => {
+                e.preventDefault();
+                showLoading();
+                const data = await updateProduct({
+                    id: request.id,
+                    name: document.getElementById('name').value,
+                    price: document.getElementById('price').value,
+                    image_display: document.getElementById('image').value,
+                    code: document.getElementById('code').value,
+                    category: document.getElementById('category').value,
+                    countInStock: document.getElementById('countInStock').value,
+                    detail: document.getElementById('description').value,
+                });
+                if (data.error) {
+                    showMessage(data.error);
+                } else {
                     hideLoading();
-				  document.location.hash = '/productlist';
-				}
-			});
-		document
-			.getElementById('image-file')
-			.addEventListener('change', async (e) => {
-				const file = e.target.files[0];
-				const formData = new FormData();
-				formData.append('image', file);
-				showLoading();
-				const data = await uploadProductImage(formData);
-				hideLoading();
+                    document.location.hash = '/productlist';
+                }
+            });
+        document
+            .getElementById('image-file')
+            .addEventListener('change', async (e) => {
+                const file = e.target.files[0];
+                const formData = new FormData();
+                formData.append('image', file);
+                showLoading();
+                const data = await uploadProductImage(formData);
+                hideLoading();
                 showMessage('Image uploaded successfully.');
-				document.getElementById('image').value = data.image;
-				// if (data.error) {
-				// 	showMessage(data.error);
-				// } else {
-				// 	showMessage('Image uploaded successfully.');
-				// 	document.getElementById('image').value = data.image;
-				// }
-			});
-	},
-	render: async () => {
-		const request = parseRequestUrl();
-		const product = await getProduct(request.id);
+                document.getElementById('image').value = data.image;
+                // if (data.error) {
+                // 	showMessage(data.error);
+                // } else {
+                // 	showMessage('Image uploaded successfully.');
+                // 	document.getElementById('image').value = data.image;
+                // }
+            });
+    },
+    render: async () => {
+        const request = parseRequestUrl();
+        const product = await getProduct(request.id);
         console.log(product);
-		return `
-    <div class="content">
+        return `
+    <div class="content-admin">
       <div>
         <a href="/#/productlist">Back to products</a>
       </div>
       <div class="form-container">
+      	
         <form id="edit-product-form">
-          <ul class="form-items">
-            <li>
-              <h1>Edit Product ${product.id}</h1>
-            </li>
+        	<h1>Edit Product ${product.id}</h1><br>
+          <ul class="form-product">
+            
             <li>
               <label for="name">Name</label>
               <input type="text" name="name" value="${product.name}" id="name" />
@@ -92,7 +92,8 @@ const ProductEditScreen = {
             </li>
             <li>
               <label for="description">Description</label>
-              <input type="text" name="description" value="${product.detail}" id="description" />
+              <textarea name="description" id="description" style="width: 580px; height: 334px;">${product.detail}</textarea>
+              
             </li>
             <li>
               <button type="submit" class="primary">Update</button>
@@ -103,6 +104,6 @@ const ProductEditScreen = {
 
     </div>
     `;
-	},
+    },
 };
 export default ProductEditScreen;

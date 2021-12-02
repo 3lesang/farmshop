@@ -3,34 +3,34 @@ import { getUsers, deleteUser } from '../api/user.js';
 import { showLoading, hideLoading, rerender, showMessage } from '../utils.js';
 
 const UserListScreen = {
-	after_render: () => {
-		const deleteButtons = document.getElementsByClassName('delete-button');
-		Array.from(deleteButtons).forEach((deleteButton) => {
-			deleteButton.addEventListener('click', async () => {
-				if (confirm('Are you sure to delete this user?')) {
-					showLoading();
-					const data = await deleteUser(deleteButton.id);
-					if (data) {
-						const product = document.querySelector(
-							'.product-item' + deleteButton.id
-						);
-						product.remove();
-					} else {
-						showMessage('wrong');
-					}
-					hideLoading();
-				}
-			});
-		});
-	},
-	render: async () => {
-		const users = await getUsers({});
-        if(!users[0]) {
+    after_render: () => {
+        const deleteButtons = document.getElementsByClassName('delete-button');
+        Array.from(deleteButtons).forEach((deleteButton) => {
+            deleteButton.addEventListener('click', async () => {
+                if (confirm('Are you sure to delete this user?')) {
+                    showLoading();
+                    const data = await deleteUser(deleteButton.id);
+                    if (data) {
+                        const product = document.querySelector(
+                            '.product-item' + deleteButton.id
+                        );
+                        product.remove();
+                    } else {
+                        showMessage('wrong');
+                    }
+                    hideLoading();
+                }
+            });
+        });
+    },
+    render: async () => {
+        const users = await getUsers({});
+        if (!users[0]) {
             showMessage("Can not get users");
             hideLoading();
             return;
         }
-		return `
+        return `
     <div class="dashboard">
     ${DashboardMenu.render({ selected: 'users' })}
     <div class="dashboard-content">
@@ -58,7 +58,7 @@ const UserListScreen = {
               <td>................</td>
               <td>${user.isAdmin}</td>
               <td>
-              <button id="${user.id}" class="delete-button">Delete</button>
+              <button id="${user.id}" class="delete-button"><i class="fas fa-trash"></i></button>
               </td>
             </tr>
             `
@@ -70,6 +70,6 @@ const UserListScreen = {
     </div>
   </div>
     `;
-	},
+    },
 };
 export default UserListScreen;
