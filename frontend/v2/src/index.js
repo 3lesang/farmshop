@@ -3,6 +3,7 @@ import Aside from './components/Aside.js';
 import Error404Screen from './screens/Error404Screen.js';
 import { parseRequestUrl, showLoading, hideLoading } from './utils.js';
 import { routes } from './route.js';
+import Footer from './components/Footer.js';
 
 const router = async () => {
 	showLoading();
@@ -24,6 +25,10 @@ const router = async () => {
 	const main = document.getElementById('main-container');
 	main.innerHTML = await screen.render();
 	if (screen.after_render) await screen.after_render();
+
+	const footer = document.getElementById('footer-container');
+	footer.innerHTML = await Footer.render();
+	await Footer.after_render();
 	hideLoading();
 };
 window.addEventListener('load', () => {
