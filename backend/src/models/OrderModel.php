@@ -18,13 +18,13 @@ include_once 'src/config/DB.php';
       return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     
-    public function add(){
+    public function add($data){
       $sql = "INSERT INTO orders(order_date, total_money, user, phone, email, address, note, ship, vat, out_money, discount, pay_method, status, cancel_cancel, product_quantity) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
       $stmt = $this->conn->prepare($sql);
 
       try {
         $this->conn->beginTransaction();
-        $stmt->execute([NULL, 10000, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL]);
+        $stmt->execute([NULL, $data['totalPrice'], NULL, NULL, NULL, $data['shipping']['address'], NULL, $data['shippingPrice'], NULL, NULL, NULL, NULL, NULL, NULL, NULL]);
 
         $id = $this->conn->lastInsertId();
         $this->conn->commit();
@@ -69,7 +69,7 @@ include_once 'src/config/DB.php';
     }
 
     public function totalMoney() {
-        $sql = "SELECT sum(total_money) as sales FROM orders group by id";
+        $sql = "SELECT sum(total_money) as sales FROM orders";
         
         $stmt = $this->conn->query($sql);     
         $res = $stmt->fetch(PDO::FETCH_ASSOC);  

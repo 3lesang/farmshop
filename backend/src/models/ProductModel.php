@@ -9,7 +9,7 @@ include_once 'src/config/DB.php';
       $db = new DB();
       $this->conn = $db->connect();
     }
-    public function getAll($searchQuery){
+    public function getAll($searchQuery) {
       $sql = "SELECT * FROM products WHERE name LIKE :keyword;";
       $stmt = $this->conn->prepare($sql);
       $stmt->bindValue(':keyword','%'.$searchQuery.'%');

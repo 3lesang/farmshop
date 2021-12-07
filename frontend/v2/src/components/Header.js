@@ -18,7 +18,7 @@ const Header = {
 		value || ''}">
 	  <input title="Search" value="" type="submit" class="button">
 	</form>
-        
+       
   </div>
 	<div>
 	${full_name ? `<a href="/#/profile"><i class="far fa-user"></i> ${full_name}</a>` : `<a href="/#/login">Login</a>`}

@@ -45,11 +45,13 @@ const PlaceOrderScreen = {
                 console.log(order);
                 const data = await createOrder(order);
                 hideLoading();
+                cleanCart();
+                document.location.hash = `/`;
                 // if (data.error) {
                 //     showMessage(data.error);
                 // } else {
                 //     cleanCart();
-                //     document.location.hash = `/order/${data.order._id}`;
+                //     document.location.hash = `/order/${data.order.id}`;
                 // }
             });
     },

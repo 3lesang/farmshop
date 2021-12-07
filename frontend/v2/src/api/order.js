@@ -13,11 +13,11 @@ export const createOrder = async (order) => {
             body: JSON.stringify(order),
         });
         if (response.statusText !== 'OK') {
-            throw new Error(response.data.message);
+            throw new Error(response.Error);
         }
         return response.data;
     } catch (err) {
-        return { error: err.response ? err.response.data.message : err.message };
+        return { error: err.message };
     }
 };
 export const getOrders = async () => {

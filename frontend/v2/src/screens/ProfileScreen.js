@@ -80,8 +80,9 @@ const ProfileScreen = {
             </tr>
           </thead>
           <tbody>
-            ${
-				orders.length === 0 
+            ${/*
+				// orders.length === 0 
+
                 
 					? `<tr><td colspan="6">No Order Found.</tr>`
 					: orders
@@ -98,7 +99,7 @@ const ProfileScreen = {
           `
 							)
 							.join('\n')
-			}
+			*/''}
           </tbody>
         </table>
       </div>

@@ -21,6 +21,7 @@ const HomeScreen = {
         }
 
         return `
+        	
             <section class = "auto-slider" >
                 <div id="slider">
 					<figure>

@@ -47,7 +47,7 @@ function createOrder($request, $response) {
     $data = json_decode($json, true);
     // adding product in db
     $orderModel = new OrderModel();
-    $orders = $orderModel->add();
+    $orders = $orderModel->add($data);
 
     // custom json response
     $response->withStatus(200);
